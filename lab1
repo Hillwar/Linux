@@ -1,0 +1,117 @@
+#!/bin/sh
+
+#1
+mkdir test && cd test
+
+#2
+for line in $(find etc/ -type d -name "*"); 
+do 
+    line+="\\";  
+    basename $line >> list; 
+done
+for line in $(find etc/ -type f -name "*"); 
+do   
+    basename $line >> list; 
+done
+
+#3
+egrep -o "[^\.].*\/" >> list  
+egrep -o "\..*" >> list 
+
+#4
+mkdir links
+
+#5
+ln list links/list_hlink
+
+#6
+ln -s list links/list_slink
+
+#7
+find -samefile links/list_hlink
+find -samefile list
+find -samefile links/list_slink
+
+#8
+wc -l list >> links/list_hlink
+
+#9
+diff links/list_hlink links/list_slink >> .comp
+if [ -s .comp ]
+then
+    echo "YES"
+fi
+
+#10
+mv list list1
+
+#11
+diff links/list_hlink links/list_slink >> .comp
+if [ -s .comp ]
+then
+    echo "YES"
+fi
+
+#12 
+ln links ~/hlink && cd ../
+
+#13
+cat list1 | egrep -o "[a-zA-Z0-9\_\.\-]*\.conf" >> list_conf
+
+#14
+cat list1 | egrep -o ".*\.d\/" >> list_d
+ 
+#15
+cat list_conf list_d >> list_conf_d
+
+#16
+mkdir test/.sub
+
+#17
+cp list_conf_d test/.sub
+
+#18
+cp -b list_conf_d test/.sub
+
+#19
+find test -type f -name "*"
+
+#20 
+man man >> man.txt
+
+#21
+split -b 1K man.txt "split"
+
+#22
+mkdir test/man.dir
+
+#23
+mv split* test/man.dir
+
+#24
+cat test/split* test/man.dir/man.txt
+
+#25
+if cmp test/man.dir/man.txt man.txt; then
+    echo "YES";
+fi;
+
+#26
+echo "dfjksg90\/43r/'ew][;=4-" > newfile
+cat man.txt >> newfile
+mv newfile man.txt
+echo "98rf4[;4]f[0o4-ki9d^&Y*" >> man.txt
+
+#27
+diff -u man.txt test/man.dir/man.txt > diff
+
+#28
+mv diff test/man.dir
+
+#29
+patch test/man.dir/man.txt test/man.dir/diff
+
+#30
+if cmp test/man.dir/man.txt man.txt; then
+    echo "YES";
+fi;

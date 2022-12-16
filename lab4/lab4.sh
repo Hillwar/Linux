@@ -1,51 +1,53 @@
 #!/bin/bash
 
 echo 1
-dnf groupinstall "Development Tools" 
+dnf groupinstall "Development Tools"
 
 read -p "Продолжить?" x
 
 echo 2
 tar -xzvf bastet-0.43.tgz
-sudo yum install boost-devel 
-sudo yum install ncurses-devel 
+sudo yum install boost-devel
+sudo yum install ncurses-devel
 cd bastet-0.43
 make
 echo "install:
 	install ./bastet /usr/bin
-	chmod 775 /usr/bin/bastet" > Makefile
+	chmod 775 /usr/bin/bastet" >Makefile
 make install
 
 read -p "Продолжить?" x
 
 echo 3
-dnf list installed > ~/task3.log
+dnf list installed >~/task3.log
 
 read -p "Продолжить?" x
 
 echo 4
-dnf deplist gcc > ~/task4_1.log
-rpm -q --whatrequires libgcc > ~/task4_2.log
+dnf deplist gcc >~/task4_1.log
+rpm -q --whatrequires libgcc >~/task4_2.log
 
 read -p "Продолжить?" x
 echo 5
-yum install createrepo 
+yum install createrepo
 mkdir ~/localrepo
 cd ~/localrepo
 cp ~/Linux/lab4/checkinstall-1.6.2-3.el6.1.x86_64.rpm ~/localrepo
 createrepo ~/localrepo
 cd /etc/yum.repos.d
-echo "[localrepo]\nname=localrepo\nbaseurl=file:///root/localrepo/\nenabled=1\ngpgcheck=0" > localrepo.repo
+echo "[localrepo]\nname=localrepo\nbaseurl=file:///root/localrepo/\nenabled=1\ngpgcheck=0" >localrepo.repo
 
 read -p "Продолжить?" x
 echo 6
-dnf repolist all > ~/task6.log
+dnf repolist all >~/task6.log
 
 read -p "Продолжить?" x
 echo 7
 cd /etc/yum.repos.d/
-for f in *; do
-	mv "$f" "$(echo "$f" | sed s/\.repo/\.oldrepos/)";
+for file in *; do
+  if [[ $file != 'localrepo.repo' ]]; then
+    sed -i 's/enabled=1/enabled=0/g' /etc/yum.repos.d/$file
+  fi
 done
 mv localrepo.oldrepos localrepo.repo
 dnf list available
@@ -54,7 +56,7 @@ dnf install checkinstall.x86_64
 read -p "Продолжить?" x
 echo 8
 cp fortunes-ru_1.52-2_all.deb ~/fortunes-ru_1.52-2_all.deb
-yum install alien 
+yum install alien
 alien --to-rpm ~/fortunes-ru_1.52-2_all.deb
 rpm -i ~/fortunes-ru-1.52-3.noarch.rpm
 
@@ -62,7 +64,7 @@ read -p "Продолжить?" x
 echo 9
 dnf download nano
 dnf install https://extras.getpagespeed.com/release-el8-latest.rpm
-dnf install rpmrebuild 
+dnf install rpmrebuild
 
 rpmrebuild -enp nano-2.9.8-1.el8.x86_64.rpm
 

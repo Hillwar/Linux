@@ -69,7 +69,7 @@ perl Makefile.PL; make; make install
 
 cd ~
 alien --to-rpm ~/fortunes-ru_1.52-2_all.deb
-rpm -i --force ~/fortunes-ru_1.52-3.noarch.rpm
+rpm -i --force ~/fortunes-ru-1.52-3.noarch.rpm
 
 read -p "Продолжить?" x
 echo 9

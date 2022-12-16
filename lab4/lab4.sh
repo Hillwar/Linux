@@ -50,7 +50,7 @@ echo 7
 cd /etc/yum.repos.d/
 for file in *; do
   if [[ $file != 'localrepo.repo' ]]; then
-    mv "$file" "$(echo "$file" | sed s/\.repo/\.oldrepos/)";
+    mv "$file" "$(echo "$file" | sed s/repo/oldrepos/)";
   fi
 done
 dnf install checkinstall.x86_64
@@ -58,7 +58,7 @@ dnf list available
 
 read -p "Продолжить?" x
 echo 8
-cp ~/Linux/lab4/fortunes-ru_1.52-2_all.deb root
+cp ~/Linux/lab4/fortunes-ru_1.52-2_all.deb ~/fortunes-ru_1.52-2_all.deb
 yum install alien
 alien --to-rpm ~/fortunes-ru_1.52-2_all.deb
 rpm -i ~/fortunes-ru-1.52-3.noarch.rpm

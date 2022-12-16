@@ -59,9 +59,17 @@ dnf list available
 read -p "Продолжить?" x
 echo 8
 cp ~/Linux/lab4/fortunes-ru_1.52-2_all.deb ~/fortunes-ru_1.52-2_all.deb
-yum install alien
+
+cd ~/Linux/lab4
+
+tar -xf alien_8.95.tar.xz -C ~
+dnf install perl
+cd alien-8.95
+perl Makefile.PL; make; make install
+
+cd ~
 alien --to-rpm ~/fortunes-ru_1.52-2_all.deb
-rpm -i ~/fortunes-ru-1.52-3.noarch.rpm
+dvnf install --force ~/fortunes-ru-1.52-3.noarch.rpm
 
 read -p "Продолжить?" x
 echo 9

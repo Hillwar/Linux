@@ -33,7 +33,6 @@ cd localrepo
 cp checkinstall-1.6.2-3.el6.1.x86_64.rpm ~/localrepo/checkinstall-1.6.2-3.el6.1.x86_64.rpm
 createrepo ~/localrepo
 cd /etc/yum.repos.d
-touch localrepo.repo
 echo "[localrepo]\nname=localrepo\nbaseurl=file:///root/localrepo/\nenabled=1\ngpgcheck=0" > localrepo.repo
 
 read -p "Введите полное имя: " fullname

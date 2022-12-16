@@ -37,7 +37,7 @@ createrepo ~/localrepo
 cd /etc/yum.repos.d
 echo "[localrepo]
 name=localrepo
-baseurl=file:///root/localrepo/
+baseurl=file:///root/localrepo
 enabled=1
 gpgcheck=0" >localrepo.repo
 

@@ -50,7 +50,7 @@ echo 7
 cd /etc/yum.repos.d/
 for file in *; do
   if [[ $file != 'localrepo.repo' ]]; then
-    mv "$file" "$(echo "$file" | sed s/repo/oldrepos/)";
+    mv "$file" "$(echo "$file" | sed s/repo/old/)";
   fi
 done
 dnf install checkinstall.x86_64

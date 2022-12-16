@@ -35,7 +35,11 @@ cd ~/localrepo
 cp ~/Linux/lab4/checkinstall-1.6.2-3.el6.1.x86_64.rpm ~/localrepo
 createrepo ~/localrepo
 cd /etc/yum.repos.d
-echo "[localrepo]\nname=localrepo\nbaseurl=file:///root/localrepo/\nenabled=1\ngpgcheck=0" >localrepo.repo
+echo "[localrepo]
+name=localrepo
+baseurl=file:///root/localrepo/
+enabled=1
+gpgcheck=0" >localrepo.repo
 
 read -p "Продолжить?" x
 echo 6
@@ -49,13 +53,12 @@ for file in *; do
     mv "$file" "$(echo "$file" | sed s/\.repo/\.oldrepos/)";
   fi
 done
-mv localrepo.oldrepos localrepo.repo
 dnf list available
 dnf install checkinstall.x86_64
 
 read -p "Продолжить?" x
 echo 8
-cp fortunes-ru_1.52-2_all.deb ~/fortunes-ru_1.52-2_all.deb
+cp ~/Linux/lab4/fortunes-ru_1.52-2_all.deb root
 yum install alien
 alien --to-rpm ~/fortunes-ru_1.52-2_all.deb
 rpm -i ~/fortunes-ru-1.52-3.noarch.rpm

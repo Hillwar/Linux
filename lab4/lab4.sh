@@ -46,7 +46,7 @@ echo 7
 cd /etc/yum.repos.d/
 for file in *; do
   if [[ $file != 'localrepo.repo' ]]; then
-    sed -i 's/enabled=1/enabled=0/g' /etc/yum.repos.d/$file
+    mv "$file" "$(echo "$file" | sed s/\.repo/\.oldrepos/)";
   fi
 done
 mv localrepo.oldrepos localrepo.repo

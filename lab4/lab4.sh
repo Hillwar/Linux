@@ -53,8 +53,8 @@ for file in *; do
     mv "$file" "$(echo "$file" | sed s/\.repo/\.oldrepos/)";
   fi
 done
-dnf list available
 dnf install checkinstall.x86_64
+dnf list available
 
 read -p "Продолжить?" x
 echo 8

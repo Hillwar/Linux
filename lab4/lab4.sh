@@ -75,10 +75,10 @@ read -p "Продолжить?" x
 echo 9
 
 dnf install wget
-wget http://mirror.ghettoforge.org/distributions/gf/el/7/plus/x86_64/nano-2.7.4-3.gf.el7.x86_64.rpm - скачали rpm пакет nano
-ls - проверяем, что все скачалось
-dnf remove nano - удаляем старый nano
+wget http://mirror.ghettoforge.org/distributions/gf/el/7/plus/x86_64/nano-2.7.4-3.gf.el7.x86_64.rpm
+ls
+dnf remove nano
 dnf install nano-2.7.4-3.gf.el7.x86_64.rpm
-nano - проверяем, что nano работает
+nano
 mv /usr/bin/nano /usr/bin/newnano
-newnano - проверяем, что newnano работает
+newnano

@@ -3,16 +3,16 @@
 #1
 dnf groupinstall "Development Tools"
 
-##2
-#tar -xzvf bastet-0.43.tgz
-#sudo yum install boost-devel
-#sudo yum install ncurses-devel
-#cd bastet-0.43
-#make
-#
-#echo -e "install:\n\tinstall ./bastet /usr/bin" >> Makefile
-#make install
-#
+#2
+tar -xzvf bastet-0.43.tgz
+sudo yum install boost-devel
+sudo yum install ncurses-devel
+cd bastet-0.43
+make
+
+echo -e "install:\n\tinstall ./bastet /usr/bin" >> Makefile
+make install
+
 ##3
 #dnf list installed > ~/task3.log
 #

@@ -32,7 +32,7 @@ echo 5
 yum install createrepo 
 mkdir localrepo
 cd localrepo
-cp ~/Linux/lab4/checkinstall-1.6.2-3.el6.1.x86_64.rpm ~/localrepo/checkinstall-1.6.2-3.el6.1.x86_64.rpm
+cp ~/Linux/lab4/checkinstall-1.6.2-3.el6.1.x86_64.rpm ~/localrepo/
 createrepo ~/localrepo
 cd /etc/yum.repos.d
 echo "[localrepo]\nname=localrepo\nbaseurl=file:///root/localrepo/\nenabled=1\ngpgcheck=0" > localrepo.repo

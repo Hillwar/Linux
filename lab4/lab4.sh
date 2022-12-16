@@ -11,7 +11,7 @@ sudo yum install boost-devel
 sudo yum install ncurses-devel 
 cd bastet-0.43
 make
-echo "install:\n\tinstall ./bastet /usr/bin\n\t chmod 775 /usr/bin/bastet-0.43" > Makefile
+echo "install:\n\tinstall ./bastet /usr/bin" > Makefile
 make install
 
 read -p "Введите полное имя: " fullname

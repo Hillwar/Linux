@@ -33,9 +33,7 @@ yum install createrepo
 mkdir ~/localrepo
 cd ~/localrepo
 cp ~/Linux/lab4/checkinstall-1.6.2-3.el6.1.x86_64.rpm ~/localrepo
-echo "---"
 createrepo ~/localrepo
-echo "---"
 cd /etc/yum.repos.d
 echo "[localrepo]\nname=localrepo\nbaseurl=file:///root/localrepo/\nenabled=1\ngpgcheck=0" > localrepo.repo
 
@@ -47,7 +45,7 @@ read -p "Продолжить?" x
 echo 7
 cd /etc/yum.repos.d/
 for f in *; do
-	mv "$f" "$(echo "$f" | sed s/.repo/.oldrepos/)";
+	mv "$f" "$(echo "$f" | sed s/\.repo/\.oldrepos/)";
 done
 mv localrepo.oldrepos localrepo.repo
 dnf list available

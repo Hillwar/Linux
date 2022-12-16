@@ -77,7 +77,7 @@ echo 9
 dnf install wget
 wget http://mirror.ghettoforge.org/distributions/gf/el/7/plus/x86_64/nano-2.7.4-3.gf.el7.x86_64.rpm
 dnf remove nano
-dnf install nano-2.7.4-3.gf.el7.x86_64.rpm
+#dnf install nano-2.7.4-3.gf.el7.x86_64.rpm
 #nano
 #mv /usr/bin/nano /usr/bin/newnano
 #newnano

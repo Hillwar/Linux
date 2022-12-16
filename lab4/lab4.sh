@@ -12,8 +12,8 @@ sudo yum install ncurses-devel
 cd bastet-0.43
 make
 echo "install:
-  install ./bastet /usr/bin
-  chmod 775 /usr/bin/bastet" > Makefile
+	install ./bastet /usr/bin
+	chmod 775 /usr/bin/bastet" > Makefile
 make install
 
 read -p "Введите полное имя: " fullname

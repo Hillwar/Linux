@@ -62,7 +62,7 @@ cp ~/Linux/lab4/fortunes-ru_1.52-2_all.deb ~/fortunes-ru_1.52-2_all.deb
 
 cd ~/Linux/lab4
 
-tar -xzvf alien_8.95.6.tar.xz
+tar -xvf alien_8.95.6.tar.xz
 dnf install perl
 cd alien-8.95.6
 perl Makefile.PL; make; make install

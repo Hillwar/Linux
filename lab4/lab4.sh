@@ -32,7 +32,7 @@ echo 5
 yum install createrepo 
 mkdir localrepo
 cd localrepo
-cp checkinstall-1.6.2-3.el6.1.x86_64.rpm ~/localrepo/checkinstall-1.6.2-3.el6.1.x86_64.rpm
+cp ~/Linux/lab4/checkinstall-1.6.2-3.el6.1.x86_64.rpm ~/localrepo/checkinstall-1.6.2-3.el6.1.x86_64.rpm
 createrepo ~/localrepo
 cd /etc/yum.repos.d
 echo "[localrepo]\nname=localrepo\nbaseurl=file:///root/localrepo/\nenabled=1\ngpgcheck=0" > localrepo.repo
@@ -60,8 +60,8 @@ rpm -i ~/fortunes-ru-1.52-3.noarch.rpm
 
 read -p "Продолжить?" x
 echo 9
-dnf download nano 
-dnf install https://extras.getpagespeed.com/release-el8-latest.rpm 
+dnf download nano
+dnf install https://extras.getpagespeed.com/release-el8-latest.rpm
 dnf install rpmrebuild 
 
 rpmrebuild -enp nano-2.9.8-1.el8.x86_64.rpm

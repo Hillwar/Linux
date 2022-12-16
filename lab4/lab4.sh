@@ -73,12 +73,12 @@ rpm -i --force ~/fortunes-ru-1.52-3.noarch.rpm
 
 read -p "Продолжить?" x
 echo 9
-dnf download nano
-dnf install https://extras.getpagespeed.com/release-el8-latest.rpm
-dnf install rpmrebuild
 
-rpmrebuild -enp nano-2.9.8-1.el8.x86_64.rpm
-
-cd ~/rpmbuild/RPMS/x86_64/
-yum remove nano
-rpm -i newnano-2.9.8-1.el8.x86_64.rpm
+dnf install wget
+wget http://mirror.ghettoforge.org/distributions/gf/el/7/plus/x86_64/nano-2.7.4-3.gf.el7.x86_64.rpm - скачали rpm пакет nano
+ls - проверяем, что все скачалось
+dnf remove nano - удаляем старый nano
+dnf install nano-2.7.4-3.gf.el7.x86_64.rpm
+nano - проверяем, что nano работает
+mv /usr/bin/nano /usr/bin/newnano
+newnano - проверяем, что newnano работает

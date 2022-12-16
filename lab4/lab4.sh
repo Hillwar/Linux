@@ -11,7 +11,7 @@ sudo yum install boost-devel 2>>/dev/null
 sudo yum install ncurses-devel 2>>/dev/null
 cd bastet-0.43
 make
-echo "install:[\n TAB] cp ~/lab4/bastet/bastet /usr/bin [\n TAB] chmod 775 /usr/bin/bastet" >> Makefile
+echo "install:[\n TAB] cp ~/lab4/bastet/bastet /usr/bin [\n TAB] chmod 775 /usr/bin/bastet" > Makefile
 make install
 
 sleep 15
@@ -34,7 +34,7 @@ cp checkinstall-1.6.2-3.el6.1.x86_64.rpm ~/localrepo/checkinstall-1.6.2-3.el6.1.
 createrepo ~/localrepo
 cd /etc/yum.repos.d
 touch localrepo.repo
-echo -e "[localrepo]\nname=localrepo\nbaseurl=file:///root/localrepo/\nenabled=1\ngpgcheck=0" > localrepo.repo
+echo "[localrepo]\nname=localrepo\nbaseurl=file:///root/localrepo/\nenabled=1\ngpgcheck=0" > localrepo.repo
 
 sleep 15
 echo 6
@@ -44,7 +44,7 @@ sleep 15
 echo 7
 cd /etc/yum.repos.d/
 for f in *; do
-	mv "$f" "$(echo "$f" | sed s/repo/oldrepos/)";
+	mv "$f" "$(echo "$f" | sed s/.repo/.oldrepos/)";
 done
 mv localrepo.oldrepos localrepo.repo
 dnf list available

@@ -30,8 +30,8 @@ rpm -q --whatrequires libgcc > ~/task4_2.log
 read -p "Продолжить?" x
 echo 5
 yum install createrepo 
-mkdir localrepo
-cd localrepo
+mkdir ~/localrepo
+cd ~/localrepo
 cp ~/Linux/lab4/checkinstall-1.6.2-3.el6.1.x86_64.rpm ~/localrepo
 echo "---"
 createrepo ~/localrepo

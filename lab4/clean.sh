@@ -4,7 +4,6 @@ for file in *; do
     mv "$file" "$(echo "$file" | sed s/\.reposs/\.repo/)";
   fi
 done
-rm localrepo.repo
 
 rm -r ~/bastet-0.43
 

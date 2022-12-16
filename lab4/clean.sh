@@ -1,7 +1,7 @@
 cd /etc/yum.repos.d/
 for file in *; do
   if [[ $file != 'localrepo.repo' ]]; then
-    mv "$file" "$(echo "$file" | sed s/ol\.repos/repo/)";
+    mv "$file" "$(echo "$file" | sed s/oldrepos/repo/)";
   fi
 done
 

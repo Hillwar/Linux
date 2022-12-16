@@ -1,14 +1,14 @@
 #!/bin/bash
 
 echo 1
-dnf groupinstall "Development Tools"
+dnf groupinstall "Development Tools" 
 
 read -p "Введите полное имя: " fullname
 
 echo 2
 tar -xzvf bastet-0.43.tgz
-sudo yum install boost-devel 2>>/dev/null
-sudo yum install ncurses-devel 2>>/dev/null
+sudo yum install boost-devel 
+sudo yum install ncurses-devel 
 cd bastet-0.43
 make
 echo "install:[\n TAB] cp ~/lab4/bastet/bastet /usr/bin [\n TAB] chmod 775 /usr/bin/bastet" > Makefile
@@ -27,7 +27,7 @@ rpm -q --whatrequires libgcc > ~/task4_2.log
 
 read -p "Введите полное имя: " fullname
 echo 5
-yum install createrepo 2>>/dev/null
+yum install createrepo 
 mkdir localrepo
 cd localrepo
 cp checkinstall-1.6.2-3.el6.1.x86_64.rpm ~/localrepo/checkinstall-1.6.2-3.el6.1.x86_64.rpm
@@ -52,15 +52,15 @@ dnf install checkinstall.x86_64
 read -p "Введите полное имя: " fullname
 echo 8
 cp fortunes-ru_1.52-2_all.deb ~/fortunes-ru_1.52-2_all.deb
-yum install alien 2>>/dev/null
+yum install alien 
 alien --to-rpm ~/fortunes-ru_1.52-2_all.deb
 rpm -i ~/fortunes-ru-1.52-3.noarch.rpm
 
 read -p "Введите полное имя: " fullname
 echo 9
-dnf download nano 2>>/dev/null
-dnf install https://extras.getpagespeed.com/release-el8-latest.rpm 2>>/dev/null
-dnf install rpmrebuild 2>>/dev/null
+dnf download nano 
+dnf install https://extras.getpagespeed.com/release-el8-latest.rpm 
+dnf install rpmrebuild 
 
 rpmrebuild -enp nano-2.9.8-1.el8.x86_64.rpm
 

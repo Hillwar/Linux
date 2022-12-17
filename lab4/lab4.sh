@@ -50,7 +50,7 @@ echo 7
 cd /etc/yum.repos.d/
 for file in *; do
   if [[ $file != 'localrepo.repo' ]]; then
-    mv "$file" "$(echo "$file" | sed s/repo/old/)";
+    mv "$file" "$(echo "$file" | sed s/repo/old/)"
   fi
 done
 dnf install checkinstall.x86_64
@@ -58,7 +58,7 @@ dnf list available
 
 for file in *; do
   if [[ $file != 'localrepo.repo' ]]; then
-    mv "$file" "$(echo "$file" | sed s/old/repo/)";
+    mv "$file" "$(echo "$file" | sed s/old/repo/)"
   fi
 done
 
@@ -71,19 +71,19 @@ cd ~/Linux/lab4
 tar -xvf alien_8.95.6.tar.xz
 dnf install perl
 cd alien-8.95.6
-perl Makefile.PL; make; make install
-
+perl Makefile.PL
+make
+make install
 cd ~
 alien --to-rpm ~/fortunes-ru_1.52-2_all.deb
 rpm -i --force ~/fortunes-ru-1.52-3.noarch.rpm
 
 read -p "Продолжить?" x
+
 echo 9
 
-dnf install wget
-wget http://mirror.ghettoforge.org/distributions/gf/el/7/plus/x86_64/nano-2.7.4-3.gf.el7.x86_64.rpm
-dnf remove nano
-dnf install nano-2.7.4-3.gf.el7.x86_64.rpm
-nano
-mv /usr/bin/nano /usr/bin/newnano
-newnano
+wget https://www.nano-editor.org/dist/v5/nano-5.4.tar.xz
+tar -xf nano-5.4.tar.xz
+./nano-5.4/configure --prefix=/usr/ --program-prefix=new
+./nano-5.4/make
+./nano-5.4/make install

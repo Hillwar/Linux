@@ -81,9 +81,10 @@ rpm -i --force ~/fortunes-ru-1.52-3.noarch.rpm
 read -p "Продолжить?" x
 
 echo 9
+dnf download nano
+dnf install https://extras.getpagespeed.com/release-el8-latest.rpm
+dnf install rpmrebuild
 
-wget https://www.nano-editor.org/dist/v5/nano-5.4.tar.xz
-tar -xf nano-5.4.tar.xz
-./nano-5.4/configure --prefix=/usr/ --program-prefix=new
-./nano-5.4/make
-./nano-5.4/make install
+rpmrebuild -enp nano-2.9.8-1.el8.x86_64.rpm
+
+rpm -i nano-2.9.8_newnano-1.el8.x86_64.rpm
